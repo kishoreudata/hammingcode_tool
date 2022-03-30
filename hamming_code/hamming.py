@@ -2,13 +2,11 @@
 
 # Form implementation generated from reading ui file 'hamming.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.3
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -61,7 +59,7 @@ class Ui_MainWindow(object):
 "font: 75 12pt \"Times New Roman\";")
         self.label_7.setObjectName("label_7")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
-        self.label_8.setGeometry(QtCore.QRect(870, 90, 261, 61))
+        self.label_8.setGeometry(QtCore.QRect(810, 90, 321, 71))
         self.label_8.setStyleSheet("color: rgb(0, 0, 255);\n"
 "font: 75 12pt \"Times New Roman\";")
         self.label_8.setObjectName("label_8")
@@ -71,7 +69,7 @@ class Ui_MainWindow(object):
         self.label_9.setText("")
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
-        self.label_10.setGeometry(QtCore.QRect(850, 360, 201, 51))
+        self.label_10.setGeometry(QtCore.QRect(850, 360, 301, 51))
         self.label_10.setStyleSheet("color: rgb(0, 0, 255);\n"
 "font: 75 12pt \"Times New Roman\";")
         self.label_10.setObjectName("label_10")
@@ -174,3 +172,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+

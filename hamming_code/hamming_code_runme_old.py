@@ -66,51 +66,23 @@ class MainClassStart(Ui_MainWindow):
         # printing hexadecimal number
         # array in reverse order
         print("\n Hexadecimal equivalent of {}: ".format(n), end="")
-        str1 = "" 
         while i >= 0:
             print(end=hexaDeciNum[i])
-            #print(type(hexaDeciNum[i]))
-            str1+=hexaDeciNum[i]
             i = i-1
         print('\n')
         #print(hexaDeciNum.decode())
         #byte_array=bytearray(hexaDeciNum)
         #byte_array = bytearray.fromhex(hexaDeciNum)
         #print(byte_array.decode())
-
+        str1 = "" 
         # traverse in the string  
-        #for ele in hexaDeciNum: 
-        #	str1 += ele
-        #	str1 = ele+str1
-        #print(str1)
-        #str1.decode("hex")
-        #byte_array = bytearray.fromhex(str1)
-        #print("corresponding ascii value is:  ",byte_array.decode())
+        for ele in hexaDeciNum: 
+            str1 += ele  
+        byte_array = bytearray.fromhex(str1)
+        print("corresponding ascii value is:  ",byte_array.decode())
+        ascii_val=byte_array.decode()
         #print(byte_array.decode())
-        
-        #print("\n Corresponding ASCII value is : ",hexToASCII(str1))
-        #return hexaDeciNum.reverse()
-        return str1
-    # Python3 program to convert hexadecimal
-    # string to ASCII format string
-    def hexToASCII(self,hexx):
-     
-        # initialize the ASCII code string as empty.
-        ascii = ""
-     
-        for i in range(0, len(hexx), 2):
-     
-            # extract two characters from hex string
-            part = hexx[i : i + 2]
-     
-            # change it into base 16 and
-            # typecast as the character
-            ch = chr(int(part, 16))
-     
-            # add this char to final ASCII string
-            ascii += ch
-         
-        return ascii    
+        return hexaDeciNum.reverse(),ascii_val
         
     def gen_ham(self):
         print("\n --------gen_ham Started--------")
@@ -153,8 +125,7 @@ class MainClassStart(Ui_MainWindow):
         print('Hamming code generated would be:- ', end="")
         print(int(''.join(map(str, h))))
         h_generated=int(''.join(map(str, h)))
-        hex_val=self.binToHexa(h_generated) 
-        ascii_val=self.hexToASCII(hex_val) 
+        hex_val,ascii_val=self.binToHexa(h_generated) 
         self.label.setText(str(h_generated))
         self.label_3.setText(str(hex_val))
         self.label_4.setText(str(ascii_val))
@@ -169,83 +140,10 @@ class MainClassStart(Ui_MainWindow):
    
     def correct_ham(self):
         print("\n ------- correct_ham Started -------")
-        '''thread1 = videoThread(self.videofileName, self.pushButton_4)
+        thread1 = videoThread(self.videofileName, self.pushButton_4)
         thread1.start()
-        self.pushButton_4.setText('Please Wait.... Notify When Completed')'''
-        print('Enter the hamming code received')
-        #d=input()
-        d = self.textEdit_2.toPlainText()
-        data=list(d)
-        data.reverse()
-        c,ch,j,r,error,h,parity_list,h_copy=0,0,0,0,0,[],[],[]
-
-        for k in range(0,len(data)):
-            p=(2**c)
-            h.append(int(data[k]))
-            h_copy.append(data[k])
-            if(p==(k+1)):
-                c=c+1
-                
-        for parity in range(0,(len(h))):
-            ph=(2**ch)
-            if(ph==(parity+1)):
-
-                startIndex=ph-1
-                i=startIndex
-                toXor=[]
-
-                while(i<len(h)):
-                    block=h[i:i+ph]
-                    toXor.extend(block)
-                    i+=2*ph
-
-                for z in range(1,len(toXor)):
-                    h[startIndex]=h[startIndex]^toXor[z]
-                parity_list.append(h[parity])
-                ch+=1
-        parity_list.reverse()
-        error=sum(int(parity_list) * (2 ** i) for i, parity_list in enumerate(parity_list[::-1]))
-        #label numbers- 14,16,11,9,19
-        if((error)==0):
-            print('\nThere is no error in the hamming code received')
-            self.label_19.setText('There is no error in the hamming code received')
-            self.label_16.setText(d)
-            hex_val=self.binToHexa(d)
-            ascii_val=self.hexToASCII(hex_val)
-            self.label_11.setText(hex_val)
-            self.label_9.setText(ascii_val)
-            self.label_14.setText("")
-        elif((error)>=len(h_copy)):
-            print('\nError cannot be detected')
-            self.label_19.setText('Error cannot be detected')
-            
-            self.label_16.setText("")
-            self.label_11.setText("")
-            self.label_9.setText("")
-            self.label_14.setText("")
-        else:
-            print('\nError is in',error,'bit')
-            self.label_14.setText(str(error))
-
-            if(h_copy[error-1]=='0'):
-                h_copy[error-1]='1'
-
-            elif(h_copy[error-1]=='1'):
-                h_copy[error-1]='0'
-                print('\nAfter correction hamming code is:- ')
-            h_copy.reverse()
-            print(int(''.join(map(str, h_copy))))
-            #binToHexa(int(''.join(map(str, h_copy))))       
-            ans=int(''.join(map(str, h_copy)))
-            ans=str(ans)
-            hex_val=self.binToHexa(ans)
-            ascii_val=self.hexToASCII(hex_val)
-            
-            self.label_16.setText(ans)
-            self.label_11.setText(hex_val)
-            self.label_9.setText(ascii_val)
-            
-            self.label_19.setText("")
+        self.pushButton_4.setText('Please Wait.... Notify When Completed')
+        
     
 if __name__ == "__main__":
     
